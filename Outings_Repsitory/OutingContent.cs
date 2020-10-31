@@ -1,5 +1,6 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,18 +10,20 @@ namespace Outings_Repsitory.Outings
 {
     public class OutingContent
     {
-        public string EventType { get; set; } 
+        public EventType Event { get; set; } 
         public int PeopleAttended { get; set; }
-        public DateTime EventDate { get; set; } = new DateTime();
+        public DateTime EventDate { get; set; }
         public int TotalCostPerson { get; set; }
+        //Addition
         public int TotalCostEvent { get; set; }
+        
 
        
         
         public OutingContent() { }
-        public OutingContent(string eventType, int peopleAtt, DateTime dateOfEvent, int totalPerson, int totalEvent)
+        public OutingContent(EventType eventType, int peopleAtt, DateTime dateOfEvent, int totalPerson, int totalEvent)
         {
-            EventType = eventType;
+            Event = eventType;
             PeopleAttended = peopleAtt;
             EventDate = dateOfEvent;
             TotalCostPerson = totalPerson;
@@ -30,4 +33,12 @@ namespace Outings_Repsitory.Outings
        
        
     }
+    public enum EventType
+    {
+        Concert,
+        Golf,
+        Bowling,
+        AmusmentPark
+    }
+   
 }

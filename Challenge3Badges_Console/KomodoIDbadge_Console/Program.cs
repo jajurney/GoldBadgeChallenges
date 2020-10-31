@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Outings_Console
+namespace KomodoIDbadge_Console
 {
     public class Program
     {
@@ -12,11 +12,10 @@ namespace Outings_Console
         {
             ProgramUI ui = new ProgramUI();
             ui.Run();
-            ProgramUI menu = new ProgramUI();
-            menu.Run();
 
-           
-           
+            List<string> accessDoor = new List<string>();
+            accessDoor.ToList();
+            Dictionary<int, List<string>> BadgeID = new Dictionary<int, List<string>>();
         }
     }
 }

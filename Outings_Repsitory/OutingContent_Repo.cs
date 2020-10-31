@@ -22,11 +22,11 @@ namespace Outings_Repsitory
         {
             return _contentList;
         }
-        public OutingContent GetOutingByType(string eventType)
+        public OutingContent GetOutingByDate(DateTime dateOfEvent)
         {
             foreach (OutingContent outingContent in _contentList)
             {
-                if (outingContent.EventType.ToLower() == eventType.ToLower())
+                if (outingContent.EventDate.ToString() == dateOfEvent.ToString())
                 {
                     return outingContent;
                 }
@@ -34,12 +34,12 @@ namespace Outings_Repsitory
             }
             return null;
         }
-        public bool UpdateExistingOutingContent(string originalTitle, OutingContent newContent)
+        public bool UpdateExistingOutingContent(DateTime originalDate , OutingContent newContent)
         {
-            OutingContent oldContent = GetOutingByType(originalTitle);
+            OutingContent oldContent = GetOutingByDate(originalDate);
             if (oldContent != null)
             {
-                oldContent.EventType = newContent.EventType;
+                oldContent.Event = newContent.Event;
                 oldContent.PeopleAttended = newContent.PeopleAttended;
                 oldContent.EventDate = newContent.EventDate;
                 oldContent.TotalCostPerson = newContent.TotalCostPerson;

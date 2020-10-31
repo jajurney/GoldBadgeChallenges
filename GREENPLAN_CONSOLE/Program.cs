@@ -10,8 +10,8 @@ namespace GREENPLAN_CONSOLE
     {
         static void Main(string[] args)
         {
-            ProgramUI ui = new ProgramUI
-                ui.Run();
+            ProgramUI ui = new ProgramUI();
+            ui.Run();
         }
     }
 }
