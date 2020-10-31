@@ -1,0 +1,6 @@
+C:\Users\josep\source\repos\GoldBadgeChallenges\Greeting_Repository\bin\Debug\Greeting_Repository.dll
+C:\Users\josep\source\repos\GoldBadgeChallenges\Greeting_Repository\bin\Debug\Greeting_Repository.pdb
+C:\Users\josep\source\repos\GoldBadgeChallenges\Greeting_Repository\obj\Debug\Greeting_Repository.csprojAssemblyReference.cache
+C:\Users\josep\source\repos\GoldBadgeChallenges\Greeting_Repository\obj\Debug\Greeting_Repository.csproj.CoreCompileInputs.cache
+C:\Users\josep\source\repos\GoldBadgeChallenges\Greeting_Repository\obj\Debug\Greeting_Repository.dll
+C:\Users\josep\source\repos\GoldBadgeChallenges\Greeting_Repository\obj\Debug\Greeting_Repository.pdb
