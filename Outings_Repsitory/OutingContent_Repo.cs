@@ -43,7 +43,7 @@ namespace Outings_Repsitory
                 oldContent.PeopleAttended = newContent.PeopleAttended;
                 oldContent.EventDate = newContent.EventDate;
                 oldContent.TotalCostPerson = newContent.TotalCostPerson;
-                oldContent.TotalCostEvent = newContent.TotalCostEvent;
+               // oldContent.TotalCostEvent = newContent.TotalCostEvent;
                 return true;
             }
             else

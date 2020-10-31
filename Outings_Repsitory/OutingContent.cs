@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,28 +10,26 @@ namespace Outings_Repsitory.Outings
 {
     public class OutingContent
     {
-        public EventType Event { get; set; } 
+        public EventType Event { get; set; }
         public int PeopleAttended { get; set; }
         public DateTime EventDate { get; set; }
         public int TotalCostPerson { get; set; }
-        //Addition
-        public int TotalCostEvent { get; set; }
-        
-
-       
-        
+        public int TotalCostEvent
+        {
+            get
+            {
+                return PeopleAttended * TotalCostPerson;
+            }
+        }
         public OutingContent() { }
-        public OutingContent(EventType eventType, int peopleAtt, DateTime dateOfEvent, int totalPerson, int totalEvent)
+        public OutingContent(EventType eventType, int peopleAtt, DateTime dateOfEvent, int totalPerson)
         {
             Event = eventType;
             PeopleAttended = peopleAtt;
             EventDate = dateOfEvent;
             TotalCostPerson = totalPerson;
-            TotalCostEvent = totalEvent;
+
         }
-        
-       
-       
     }
     public enum EventType
     {
@@ -40,5 +38,4 @@ namespace Outings_Repsitory.Outings
         Bowling,
         AmusmentPark
     }
-   
 }

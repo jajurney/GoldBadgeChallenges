@@ -14,9 +14,6 @@ namespace Outings_Console
             ui.Run();
             ProgramUI menu = new ProgramUI();
             menu.Run();
-
-           
-           
         }
     }
 }

@@ -130,7 +130,7 @@ namespace KomodoCafe_Console
             int mealNum = int.Parse(Console.ReadLine());
             string mealItem = Console.ReadLine();
 
-            MenuContent oldItem = _repo.GetItemByMealNumber(mealNum);  _repo.GetItemByMealName(mealItem);  
+            MenuContent oldItem = _repo.GetItemByMealName(mealItem);
             if (oldItem == null)
             {
                 Console.WriteLine("Menu item is not available.");
@@ -159,7 +159,7 @@ namespace KomodoCafe_Console
                     int newNum = int.Parse(Console.ReadLine());
                     newItem.MealNum = newNum;
 
-                    bool numUpdated = _repo.UpdateMenuItems(mealNum, oldItem);
+                    bool numUpdated = _repo.UpdateMenuItems(mealItem, oldItem);
                     if (numUpdated)
                     {
                         Console.WriteLine("Item Number has been updated.");
@@ -191,10 +191,10 @@ namespace KomodoCafe_Console
         private void DeleteMenuItem()
         {
             ShowAllMenuItems();
-            Console.WriteLine("Enter Meal Number to delete:");
-            int itemDelete = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Meal Item to delete:");
+            string itemDelete = Console.ReadLine();
 
-            MenuContent mealToDelete = _repo.GetItemByMealNumber(itemDelete);
+            MenuContent mealToDelete = _repo.GetItemByMealName(itemDelete);
             bool deleteMenuItem = _repo.DeleteMenuItem(mealToDelete);
             if (deleteMenuItem)
             {

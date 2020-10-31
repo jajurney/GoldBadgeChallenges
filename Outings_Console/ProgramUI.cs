@@ -27,32 +27,27 @@ namespace Outings_Console
                 EventType.Golf,
                 30,
                 Convert.ToDateTime("7/15/19"),
-                100,
-                3000);
+                100);
             OutingContent bowlingOuting = new OutingContent(
                 EventType.Bowling,
                 25,
                 Convert.ToDateTime("8/9/2019"),
-                200,
-                5000);
+                200);
             OutingContent amusemnetOuting = new OutingContent(
                EventType.AmusmentPark,
                20,
                Convert.ToDateTime("10/13/2019"),
-               150,
-               3000);
+               150);
             OutingContent concertOuting = new OutingContent(
                 EventType.Concert,
                 35,
                 Convert.ToDateTime("12/15/2019"),
-                250,
-                8750);
+                250);
             OutingContent concertOutingTwo = new OutingContent(
                    EventType.Concert,
                    20,
                    Convert.ToDateTime("3/3/2019"),
-                   300,
-                   6000);
+                   300);
             _repo.AddOutingToList(golfOuting);
             _repo.AddOutingToList(bowlingOuting);
             _repo.AddOutingToList(amusemnetOuting);
@@ -116,6 +111,21 @@ namespace Outings_Console
 
             OutingContent newOutingContent = new OutingContent();
 
+            Console.WriteLine("How many people Attentended?");
+            string peopleAsString = Console.ReadLine();
+            int peopleAsInt = int.Parse(peopleAsString);
+            newOutingContent.PeopleAttended = peopleAsInt;
+
+            Console.WriteLine("What was the date of the Event?");
+            string dateAsString = Console.ReadLine();
+            DateTime dateAsDate = DateTime.Parse(dateAsString);
+            newOutingContent.EventDate = dateAsDate;
+
+            Console.WriteLine("How much per person?");
+            string costAsString = Console.ReadLine();
+            int costAsInt = int.Parse(costAsString);
+            newOutingContent.TotalCostPerson = costAsInt;
+
             bool stopRunning = false;
             while (!stopRunning)
             {
@@ -144,32 +154,13 @@ namespace Outings_Console
                         stopRunning = true;
                         break;
                 }
-                Console.WriteLine("How many people Attentend?");
-                string peopleAsString = Console.ReadLine();
-                int peopleAsInt = int.Parse(peopleAsString);
-                newOutingContent.PeopleAttended = peopleAsInt;
-
-                Console.WriteLine("What was the date of the Event?");
-                string dateAsString = Console.ReadLine();
-                DateTime dateAsDate = DateTime.Parse(dateAsString);
-                newOutingContent.EventDate = dateAsDate;
-
-                Console.WriteLine("How much per person?");
-                string costAsString = Console.ReadLine();
-                int costAsInt = int.Parse(costAsString);
-                newOutingContent.TotalCostPerson = costAsInt;
-                //Addition?
-                Console.WriteLine("How much was the event Total?");
-                string totalAsString = Console.ReadLine();
-                int totalAsInt = int.Parse(totalAsString);
-                newOutingContent.TotalCostEvent = totalAsInt;
-
 
             }
-            bool outingAdded = _repo.AddOutingToList(newOutingContent);
-            if (outingAdded)
+            bool wasAdded = _repo.AddOutingToList(newOutingContent);
+            if (wasAdded)
             {
                 Console.WriteLine("The New Outing was Added Successfully!");
+                Console.ReadLine();
             }
             else
             {
@@ -212,14 +203,13 @@ namespace Outings_Console
                 oldContent.Event,
                 oldContent.PeopleAttended,
                 oldContent.EventDate,
-                oldContent.TotalCostPerson,
-                oldContent.TotalCostEvent);
+                oldContent.TotalCostPerson);
+
             Console.WriteLine("Enter the number option you would like to select:\n" +
                 "1. Event Type\n" +
                 "2. People Attended\n" +
                 "3. Event Date\n" +
-                "4. Cost Per Person\n" +
-                "5. Total Cost of Outing");
+                "4. Cost Per Person");
             string selection = Console.ReadLine();
             switch (selection)
             {
@@ -272,12 +262,6 @@ namespace Outings_Console
                     int costAsInt = int.Parse(costAsString);
                     newContent.TotalCostPerson = costAsInt;
                     break;
-                case "5":
-                    Console.WriteLine("New Event Total?");
-                    string totalAsString = Console.ReadLine();
-                    int totalAsInt = int.Parse(totalAsString);
-                    newContent.TotalCostEvent = totalAsInt;
-                    break;
                 default:
                     break;
 
@@ -286,7 +270,7 @@ namespace Outings_Console
 
         private void DisplayContent(OutingContent outingContent)
         {
-          
+
             Console.WriteLine($"{outingContent.Event,-20}{outingContent.PeopleAttended,-20}{outingContent.EventDate,-20}{outingContent.TotalCostPerson,20}{outingContent.TotalCostEvent,20}");
         }
 
