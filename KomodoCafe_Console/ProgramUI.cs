@@ -37,7 +37,7 @@ namespace KomodoCafe_Console
             while (continueRunning)
             {
                 Console.Clear();
-
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Chose a number to continue:\n" +
                     "1. Show Full Menu\n" +
                     "2. Add Menu Items\n" +
@@ -74,6 +74,7 @@ namespace KomodoCafe_Console
         private void ShowAllMenuItems()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
 
             List<MenuContent> listOfMenuContents = _repo.GetMenu();
 
@@ -88,7 +89,7 @@ namespace KomodoCafe_Console
         private void CreateNewMenuItem()
         {
             Console.Clear();
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
             MenuContent newMenuContent = new MenuContent();
 
             Console.WriteLine("Enter New Menu Item Number:");
@@ -126,6 +127,7 @@ namespace KomodoCafe_Console
         private void UpdateMenuItems()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Enter item you would like to update");
             string mealItem = Console.ReadLine();
 
@@ -239,6 +241,7 @@ namespace KomodoCafe_Console
         private void DeleteMenuItem()
         {
             ShowAllMenuItems();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Enter Meal Item to delete:");
             string itemDelete = Console.ReadLine();
 

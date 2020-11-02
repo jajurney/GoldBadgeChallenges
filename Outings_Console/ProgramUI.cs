@@ -18,15 +18,18 @@ namespace Outings_Console
         public void Run()
         {
             OutingsContent();
+            TotalOuting();
             Menu();
             Run();
         }
         private void OutingsContent()
         {
+          
+
             OutingContent golfOuting = new OutingContent(
                 EventType.Golf,
                 30,
-                Convert.ToDateTime("7/15/19"),
+                Convert.ToDateTime("7/15/2019"),
                 100);
             OutingContent bowlingOuting = new OutingContent(
                 EventType.Bowling,
@@ -54,19 +57,32 @@ namespace Outings_Console
             _repo.AddOutingToList(concertOuting);
             _repo.AddOutingToList(concertOutingTwo);
         }
+
+        private decimal TotalOuting()
+        {
+            List<OutingContent> listOfOutings = _repo.GetOutingContents();
+            decimal totalCostAllOutings = 0;
+            foreach (OutingContent outingContent in listOfOutings)
+            {
+                totalCostAllOutings += Convert.ToDecimal(outingContent.TotalCostEvent);
+            }
+            return totalCostAllOutings;
+        }
         private void Menu()
         {
             bool continueRunning = true;
             while (continueRunning)
             {
                 Console.Clear();
-
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine("Enter your selection:\n" +
                     "1. Show all Outings\n" +
                     "2. Find an Outing By Date\n" +
                     "3. Add a New Outing\n" +
                     "4. Update existing Outings\n" +
-                    "5. Exit");
+                    "5. Show Total cost of all outings\n"+
+                    "6. Exit");
                 string input = Console.ReadLine();
                 switch (input)
                 {
@@ -83,10 +99,15 @@ namespace Outings_Console
                         UpdateExistingOutingContentByDate();
                         break;
                     case "5":
+                        decimal totalCostAllOutings = TotalOuting();
+                        Console.WriteLine($"Total cost of all outings is {totalCostAllOutings}");
+                        Console.ReadLine();
+                        break;
+                    case "6":
                         continueRunning = false;
                         break;
                     default:
-                        Console.WriteLine("Please choose a different option");
+                        Console.WriteLine("Please choose a valid option");
                         Console.ReadLine();
                         break;
                 }
@@ -101,7 +122,10 @@ namespace Outings_Console
             foreach (OutingContent outingContent in listOfOutings)
             {
                 DisplayContent(outingContent);
+              outingContent.TotalCostEvent++;
             }
+           
+            
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
@@ -170,6 +194,7 @@ namespace Outings_Console
         private void UpdateExistingOutingContentByDate()
         {
             Console.Clear();
+            
             Console.WriteLine("Enter the date of the Outing you would like to update.");
             string dateAsString = Console.ReadLine();
             DateTime dateOfEvent = DateTime.Parse(dateAsString);
@@ -285,7 +310,27 @@ namespace Outings_Console
            
             }
         }
+        public void DeleteExistingOutingContent()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
 
+            ShowAllOutings();
+            Console.WriteLine("Enter Date for Outing you would like to delete");
+            string dateString = Console.ReadLine();
+            DateTime dateAsDate = DateTime.Parse(dateString);
+            
+
+            OutingContent outingToDelete = _repo.GetOutingByDate(dateAsDate);
+            bool outingDeleted = _repo.DeleteExistingOutingContent(outingToDelete);
+            if (outingDeleted)
+            {
+                Console.WriteLine("Outing has been Deleted");
+            }
+            else
+            {
+                Console.WriteLine("Outing was not Deleted");
+            }
+        }
 
         private void DisplayContent(OutingContent outingContent)
         {

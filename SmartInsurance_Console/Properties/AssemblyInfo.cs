@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GREENPLAN_CONSOLE")]
+[assembly: AssemblyTitle("SmartInsurance_Console")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GREENPLAN_CONSOLE")]
+[assembly: AssemblyProduct("SmartInsurance_Console")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d9b03894-388e-43f5-ba9b-20d173332399")]
+[assembly: Guid("0dc0078f-00f6-4118-ad46-329103792f2d")]
 
 // Version information for an assembly consists of the following four values:
 //

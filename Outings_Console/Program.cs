@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Outings_Repsitory.Outings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Outings_Console
             ui.Run();
             ProgramUI menu = new ProgramUI();
             menu.Run();
+        
         }
     }
 }

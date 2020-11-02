@@ -20,7 +20,10 @@ namespace Outings_Repsitory.Outings
             {
                 return PeopleAttended * TotalCostPerson;
             }
+            set { }
         }
+     
+       
         public OutingContent() { }
         public OutingContent(EventType eventType, int peopleAtt, DateTime dateOfEvent, int totalPerson)
         {
@@ -28,6 +31,7 @@ namespace Outings_Repsitory.Outings
             PeopleAttended = peopleAtt;
             EventDate = dateOfEvent;
             TotalCostPerson = totalPerson;
+
 
         }
     }

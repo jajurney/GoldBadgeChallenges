@@ -198,6 +198,45 @@ namespace Greeting_Console
                         Console.WriteLine($"Error: Could not update {lastName}");
                     }
                     break;
+                case '2':
+                    Console.WriteLine("Update Last Name");
+                    newCust.LastName = Console.ReadLine();
+                    bool nameUpdated = _repo.UpdateCustomerInfo(lastName, oldCust);
+                    if (nameUpdated)
+                    {
+                        Console.WriteLine("Item successfully updated");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: Could not update {lastName}");
+                    }
+                    break;
+                case '3':
+                    Console.WriteLine("Update Customer Type: Potential, Current, or Past.");
+                    newCust.CustType = Console.ReadLine();
+                    bool typeUpdated = _repo.UpdateCustomerInfo(lastName, oldCust);
+                    if (typeUpdated)
+                    {
+                        Console.WriteLine("Item successfully updated");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: Could not update {lastName}");
+                    }
+                    break;
+                case '4':
+                    Console.WriteLine("Updated Email");
+                    newCust.Email = Console.ReadLine();
+                    bool emailUpdated = _repo.UpdateCustomerInfo(lastName, oldCust);
+                    if (emailUpdated)
+                    {
+                        Console.WriteLine("Item successfully updated");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: Could not update {lastName}");
+                    }
+                    break;
                 default:
                     break;
 

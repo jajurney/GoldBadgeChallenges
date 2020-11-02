@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GREENPLAN_CONSOLE
+namespace SmartInsurance_Console
 {
-    class Program
+    class ProgramUI
     {
-        static void Main(string[] args)
+        public void Run()
         {
-            ProgramUI ui = new ProgramUI();
-            ui.Run();
+
         }
     }
 }
