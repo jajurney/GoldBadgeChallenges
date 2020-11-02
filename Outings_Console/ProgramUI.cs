@@ -111,6 +111,15 @@ namespace Outings_Console
 
             OutingContent newOutingContent = new OutingContent();
 
+            Console.WriteLine("Enter Outing Type:");
+            Console.WriteLine("1. Concert");
+            Console.WriteLine("2. Golf");
+            Console.WriteLine("3. Bowling");
+            Console.WriteLine("4. Amusment Park");
+            string eventType = Console.ReadLine();
+            int eventAsInt = int.Parse(eventType);
+            newOutingContent.Event = (EventType)eventAsInt;
+
             Console.WriteLine("How many people Attentended?");
             string peopleAsString = Console.ReadLine();
             int peopleAsInt = int.Parse(peopleAsString);
@@ -126,36 +135,8 @@ namespace Outings_Console
             int costAsInt = int.Parse(costAsString);
             newOutingContent.TotalCostPerson = costAsInt;
 
-            bool stopRunning = false;
-            while (!stopRunning)
-            {
-                Console.WriteLine("Enter Outing Type:");
-                Console.WriteLine("1. Concert");
-                Console.WriteLine("2. Golf");
-                Console.WriteLine("3. Bowling");
-                Console.WriteLine("4. Amusment Park");
-                string eventType = Console.ReadLine();
-                switch (eventType)
-                {
-                    case "1":
-                        newOutingContent.Event = EventType.Concert;
-                        break;
-                    case "2":
-                        newOutingContent.Event = EventType.Golf;
-                        break;
-                    case "3":
-                        newOutingContent.Event = EventType.Bowling;
-                        break;
-                    case "4":
-                        newOutingContent.Event = EventType.AmusmentPark;
-                        break;
-                    default:
-                        Console.WriteLine("Please enter a correct option.");
-                        stopRunning = true;
-                        break;
-                }
 
-            }
+
             bool wasAdded = _repo.AddOutingToList(newOutingContent);
             if (wasAdded)
             {
@@ -205,7 +186,7 @@ namespace Outings_Console
                 oldContent.EventDate,
                 oldContent.TotalCostPerson);
 
-            Console.WriteLine("Enter the number option you would like to select:\n" +
+            Console.WriteLine("Enter the number option you would like to update:\n" +
                 "1. Event Type\n" +
                 "2. People Attended\n" +
                 "3. Event Date\n" +
@@ -214,9 +195,7 @@ namespace Outings_Console
             switch (selection)
             {
                 case "1":
-                    bool stopRunning = false;
-                    while (!stopRunning)
-                    {
+                   
                         Console.WriteLine("Enter Outing Type:");
                         Console.WriteLine("1. Concert");
                         Console.WriteLine("2. Golf");
@@ -239,34 +218,74 @@ namespace Outings_Console
                                 break;
                             default:
                                 Console.WriteLine("Please enter a correct option.");
-                                stopRunning = true;
                                 break;
                         }
+                   
+                    bool enumUpdated = _repo.UpdateExistingOutingContent(dateOfEvent, oldContent);
+                    if (enumUpdated)
+                    {
+                        Console.WriteLine("Outing was Updated!");
                     }
-                    break;
+                    else
+                    {
+                        Console.WriteLine($"Could not update the Outing on {dateOfEvent}.");
+                    } break;
+                    
                 case "2":
                     Console.WriteLine("Update Attendance");
                     string peopleAsString = Console.ReadLine();
                     int peopleAsInt = int.Parse(peopleAsString);
                     newContent.PeopleAttended = peopleAsInt;
+
+                    bool wasSuccesful = _repo.UpdateExistingOutingContent(dateOfEvent, oldContent);
+                    if (wasSuccesful)
+                    {
+                        Console.WriteLine("Outing was Updated!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Could not update the Outing on  {dateOfEvent}.");
+                    }
                     break;
+                  
                 case "3":
                     Console.WriteLine("New Event Date?");
                     string dateString = Console.ReadLine();
                     DateTime dateAsDate = DateTime.Parse(dateString);
                     newContent.EventDate = dateAsDate;
+                    bool wasUpdated = _repo.UpdateExistingOutingContent(dateOfEvent, oldContent);
+                    if (wasUpdated)
+                    {
+                        Console.WriteLine("Outing was Updated!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Could not update the Outing on {dateOfEvent}.");
+                    }
                     break;
                 case "4":
                     Console.WriteLine("New Cost Per Person?");
                     string costAsString = Console.ReadLine();
                     int costAsInt = int.Parse(costAsString);
                     newContent.TotalCostPerson = costAsInt;
+                    bool costUpdated = _repo.UpdateExistingOutingContent(dateOfEvent, oldContent);
+                    if (costUpdated)
+                    {
+                        Console.WriteLine("Outing was Updated!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Could not update the Outing on {dateOfEvent}.");
+                    }
                     break;
                 default:
+                    Console.WriteLine("Outings have been updated.");
+                    Console.ReadLine();
                     break;
-
+           
             }
         }
+
 
         private void DisplayContent(OutingContent outingContent)
         {

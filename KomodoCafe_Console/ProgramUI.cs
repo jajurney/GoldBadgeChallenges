@@ -102,7 +102,7 @@ namespace KomodoCafe_Console
             Console.WriteLine("Enter New Item Description:");
             newMenuContent.MealDescription = Console.ReadLine();
 
-            Console.WriteLine("Enter New Item Price");
+            Console.WriteLine("Enter New Item Price:");
             string priceAsString = Console.ReadLine();
             double priceAsDouble = double.Parse(priceAsString);
             newMenuContent.MealPrice = priceAsDouble;
@@ -127,7 +127,6 @@ namespace KomodoCafe_Console
         {
             Console.Clear();
             Console.WriteLine("Enter item you would like to update");
-            int mealNum = int.Parse(Console.ReadLine());
             string mealItem = Console.ReadLine();
 
             MenuContent oldItem = _repo.GetItemByMealName(mealItem);
@@ -137,7 +136,7 @@ namespace KomodoCafe_Console
                 Console.ReadKey();
                 return;
             }
-        
+
             MenuContent newItem = new MenuContent(
                 oldItem.MealNum,
                 oldItem.MealItem,
@@ -155,7 +154,7 @@ namespace KomodoCafe_Console
             switch (option)
             {
                 case '1':
-                    Console.WriteLine("Enter new Meal Number");
+                    Console.WriteLine("Enter Updated Meal Number");
                     int newNum = int.Parse(Console.ReadLine());
                     newItem.MealNum = newNum;
 
@@ -166,11 +165,11 @@ namespace KomodoCafe_Console
                     }
                     else
                     {
-                        Console.WriteLine($"Item number bad, could not update {mealNum}");
+                        Console.WriteLine($"Item number bad, could not update {mealItem}");
                     }
                     break;
                 case '2':
-                    Console.WriteLine("Enter a new Item Name");
+                    Console.WriteLine("Enter Updated Item Name");
                     string item = Console.ReadLine();
                     newItem.MealItem = item;
 
@@ -181,11 +180,60 @@ namespace KomodoCafe_Console
                     }
                     else
                     {
-                        Console.WriteLine($"Error: Could not update {mealItem}");
+                        Console.WriteLine($"Could not update {mealItem}");
+                    }
+                    break;
+                case '3':
+                    Console.WriteLine("Enter Updated Meal Description");
+                    string itemDescription = Console.ReadLine();
+                    newItem.MealDescription = itemDescription;
+
+                    bool descUpdated = _repo.UpdateMenuItems(mealItem, oldItem);
+                    if (descUpdated)
+                    {
+                        Console.WriteLine("Item successfully updated");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Could not update {mealItem}.");
+                    }
+                    break;
+                case '4':
+                    Console.WriteLine("Enter Updated Item Price");
+                    string priceAsString = Console.ReadLine();
+                    double priceAsDouble = double.Parse(priceAsString);
+                    newItem.MealPrice = priceAsDouble;
+
+                    bool priceUpdated = _repo.UpdateMenuItems(mealItem, oldItem);
+                    if (priceUpdated)
+                    {
+                        Console.WriteLine("Item successfully updated");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: Could not update {mealItem}.");
+                    }
+                    break;
+                case '5':
+                    Console.WriteLine("Enter Updated Ingredients:");
+                    newItem.Ingredients = Console.ReadLine();
+
+                    bool ingredUpdated = _repo.UpdateMenuItems(mealItem, oldItem);
+                    if (ingredUpdated)
+                    {
+                        Console.WriteLine("Item successfully updated");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: Could not update {mealItem}.");
                     }
                     break;
                 default:
-                    break;
+                    Console.WriteLine("Menu Has Been updated.");
+                    return;
+                    
+
+
             }
         }
         private void DeleteMenuItem()
@@ -207,13 +255,11 @@ namespace KomodoCafe_Console
         }
         private void DisplayMenu(MenuContent menuContent)
         {
-
-            Console.WriteLine($"Meal Number: {menuContent.MealNum}");
-            Console.WriteLine($"Meal Item: {menuContent.MealItem}");
-            Console.WriteLine($"Description: {menuContent.MealDescription}");
-            Console.WriteLine($"Price: {menuContent.MealPrice}");
-            Console.WriteLine($"Ingredients: {menuContent.Ingredients}");
-
+            Console.WriteLine($"Meal Number: {menuContent.MealNum,-15}");
+            Console.WriteLine($"Meal Item: {menuContent.MealItem,-15}");
+            Console.WriteLine($"Description: {menuContent.MealDescription,-15}");
+            Console.WriteLine($"Price: {menuContent.MealPrice,-15}");
+            Console.WriteLine($"Ingredients: {menuContent.Ingredients,-15}");
         }
     }
 }

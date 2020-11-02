@@ -43,7 +43,6 @@ namespace Outings_Repsitory
                 oldContent.PeopleAttended = newContent.PeopleAttended;
                 oldContent.EventDate = newContent.EventDate;
                 oldContent.TotalCostPerson = newContent.TotalCostPerson;
-               // oldContent.TotalCostEvent = newContent.TotalCostEvent;
                 return true;
             }
             else
@@ -52,6 +51,11 @@ namespace Outings_Repsitory
             }
 
 
+        }
+        public bool DeleteExistingOutingContent(OutingContent existingOutingContent)
+        {
+            bool deleteOuting = _contentList.Remove(existingOutingContent);
+            return deleteOuting;
         }
        
     }
