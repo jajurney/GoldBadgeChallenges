@@ -17,4 +17,8 @@ For the Gold Badge Challenges, I choose to do Challenge: 1, Challenge: 4, and Ch
     - GreetingTests
 ### Bonus Challenge 8: Smart Insurance
     -SmartInsurance_Console
-###
+### Install the Program
+To view this program and run iit you can clone it locally to run the program. You may use the command terminal to get the folder from the site. Follow the steps from GitHub to clone this program. 
+#### GitHub Clone command:
+    $ git clone https://github.com/jajurney/GoldBadgeChallenges.git
+    
